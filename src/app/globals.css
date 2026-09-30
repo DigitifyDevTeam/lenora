@@ -1,26 +1,125 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-sand: #d4c9b3;
+  --color-sand-soft: #ebe4d6;
+  --color-paper: #fefaf9;
+  --color-cream: #f7f1ea;
+  --color-terracotta: #a46c54;
+  --color-coral: #fd8b7b;
+  --color-coral-deep: #f2705e;
+  --color-rust: #963705;
+  --color-forest: #3a4a41;
+  --color-forest-deep: #26322b;
+  --color-ink: #2b2521;
+
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-inter), Inter, system-ui, sans-serif;
+  --font-script: var(--font-alex), "Alex Brush", cursive;
+
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  flex: 1;
+}
+
+::selection {
+  background: var(--color-coral);
+  color: var(--color-paper);
+}
+
+.js-reveal .reveal:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.js-reveal .reveal {
+  transition:
+    opacity 1s var(--ease-soft),
+    transform 1s var(--ease-soft);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-rise {
+  animation: rise 1s var(--ease-soft) both;
+  animation-delay: var(--rise-delay, 0ms);
+}
+
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.64 0 0 0 0 0.42 0 0 0 0 0.33 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 38s linear infinite;
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .js-reveal .reveal:not(.is-visible) {
+    opacity: 1;
+    transform: none;
+  }
+  .js-reveal .reveal {
+    transition: none;
+  }
+  .animate-marquee,
+  .animate-float,
+  .animate-rise {
+    animation: none;
+  }
 }
