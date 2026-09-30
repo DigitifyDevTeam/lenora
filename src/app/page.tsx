@@ -1,5 +1,5 @@
 import { JsonLd } from "@/components/json-ld";
-import { Audience, HowItWorks, WhyLenora, Zones } from "@/components/sections/commercial";
+import { Audience, WhyLenora, Zones } from "@/components/sections/commercial";
 import { Hero, TownMarquee } from "@/components/sections/hero";
 import { About, Pillars, Reassurance } from "@/components/sections/intro";
 import { GuestExperience, Housekeeping, OnlinePresence } from "@/components/sections/services";
@@ -21,7 +21,6 @@ export default function Home() {
         <WhyLenora />
         <Audience />
         <Zones />
-        <HowItWorks />
         <Testimonials />
         <Faq />
         <FinalCta />

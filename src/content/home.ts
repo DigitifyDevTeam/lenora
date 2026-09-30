@@ -49,7 +49,7 @@ export const pillars = [
     text: "Nous optimisons votre présence sur les principales plateformes de location saisonnière et assurons le suivi de vos annonces, calendriers et réservations.",
     href: "#presence",
     cta: "Voir la gestion des annonces",
-    image: "/images/presence-en-ligne.webp",
+    image: "/images/service-presence.webp",
     alt: "Optimisation d'une annonce de location saisonnière",
   },
   {
@@ -58,7 +58,7 @@ export const pillars = [
     text: "De la préparation de l'arrivée au départ, nous assurons la communication et l'accompagnement des voyageurs pendant leur séjour.",
     href: "#voyageurs",
     cta: "Découvrir la gestion des voyageurs",
-    image: "/images/voyageurs.webp",
+    image: "/images/service-voyageurs.webp",
     alt: "Accueil des voyageurs dans un logement préparé",
   },
   {
@@ -67,7 +67,7 @@ export const pillars = [
     text: "Ménage, linge, consommables, kit de bienvenue et suivi du logement : nous veillons au bon déroulement de chaque séjour.",
     href: "#intendance",
     cta: "Découvrir notre intendance",
-    image: "/images/intendance.webp",
+    image: "/images/service-intendance.webp",
     alt: "Linge propre et logement prêt pour les prochains voyageurs",
   },
 ];
@@ -240,17 +240,5 @@ export const faqs = [
   {
     q: "Gérez-vous les arrivées et les départs des voyageurs ?",
     a: "Oui. Nous organisons l'accueil et l'accès au logement, restons disponibles pendant le séjour et assurons le départ ainsi que le contrôle du logement.",
-  },
-  {
-    q: "Prenez-vous en charge le ménage et le linge ?",
-    a: "Oui. Le ménage est réalisé entre chaque séjour et le linge est confié à une blanchisserie professionnelle, pour un logement toujours prêt à accueillir.",
-  },
-  {
-    q: "Est-ce que je dois m'engager sur une longue durée ?",
-    a: "Les conditions d'engagement vous sont présentées en toute transparence lors du premier échange, avec la grille tarifaire, pour que vous décidiez sereinement.",
-  },
-  {
-    q: "Comment est calculé votre forfait ?",
-    a: "Lenora propose une offre unique, pensée pour plus de clarté. La grille tarifaire vous est communiquée sur simple demande, et la mise en service (photos professionnelles, ménage complet) est proposée sur devis.",
   },
 ];

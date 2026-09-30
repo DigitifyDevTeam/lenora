@@ -12,7 +12,7 @@ function ListingMockup() {
       <div className="overflow-hidden rounded-[2rem] bg-paper text-ink shadow-[0_50px_90px_-40px_rgba(0,0,0,0.6)]">
         <div className="relative aspect-[16/10]">
           <Image
-            src="/images/presence-en-ligne.webp"
+            src="/images/service-presence.webp"
             alt="Aperçu d'une annonce de location saisonnière optimisée"
             fill
             sizes="(min-width: 1024px) 28rem, 90vw"
@@ -139,7 +139,7 @@ export function GuestExperience() {
           />
           <div className="reveal relative aspect-[16/9] overflow-hidden rounded-[2rem]" style={delay(120)}>
             <Image
-              src="/images/voyageurs.webp"
+              src="/images/service-voyageurs.webp"
               alt="Accueil chaleureux des voyageurs dans le logement"
               fill
               sizes="(min-width: 1024px) 36rem, 90vw"
@@ -211,7 +211,7 @@ export function Housekeeping() {
 
           <div className="reveal relative flex min-h-[26rem] flex-col justify-end overflow-hidden rounded-[2rem] p-8 text-paper lg:col-span-4" style={delay(200)}>
             <Image
-              src="/images/intendance.webp"
+              src="/images/service-intendance.webp"
               alt="Linge propre plié, prêt pour les voyageurs"
               fill
               sizes="(min-width: 1024px) 24rem, 90vw"

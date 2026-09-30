@@ -1,7 +1,6 @@
 "use client";
 
 import { ChevronDown } from "lucide-react";
-import { useState } from "react";
 import { mainNav } from "@/content/navigation";
 
 const linkClass =
@@ -16,36 +15,30 @@ function DesktopNavGroup({
   href: string;
   links: { href: string; label: string }[];
 }) {
-  const [open, setOpen] = useState(false);
-
   return (
-    <li
-      className="relative shrink-0"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-      onFocus={() => setOpen(true)}
-      onBlur={(e) => {
-        if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setOpen(false);
-      }}
-    >
-      <a
-        href={href}
+    <li className="group relative shrink-0">
+      <button
+        type="button"
         className={`${linkClass} inline-flex items-center gap-1 whitespace-nowrap`}
         aria-haspopup="true"
-        aria-expanded={open}
       >
         {label}
-        <ChevronDown className={`size-3.5 transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
-      </a>
-      <div
-        className={`absolute top-full left-0 z-50 pt-3 transition-all duration-300 ${
-          open ? "visible translate-y-0 opacity-100" : "invisible -translate-y-1 opacity-0"
-        }`}
-      >
+        <ChevronDown className="size-3.5 transition-transform duration-300 group-hover:rotate-180 group-focus-within:rotate-180" />
+      </button>
+      <div className="pointer-events-none invisible absolute top-full left-0 z-[80] pt-3 opacity-0 transition-all duration-200 group-focus-within:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:visible group-hover:opacity-100">
         <ul
           role="menu"
           className="min-w-[22rem] rounded-2xl border border-sand/70 bg-paper p-2 shadow-[0_24px_50px_-24px_rgba(58,74,65,0.45)]"
         >
+          <li role="none">
+            <a
+              role="menuitem"
+              href={href}
+              className="block rounded-xl px-4 py-3 text-[0.82rem] font-semibold leading-snug text-forest transition-colors hover:bg-cream"
+            >
+              {label}
+            </a>
+          </li>
           {links.map((child) => (
             <li key={child.href} role="none">
               <a
@@ -82,10 +75,6 @@ export function DesktopMainNav() {
 }
 
 export function MobileMainNav({ onNavigate }: { onNavigate: () => void }) {
-  const [expanded, setExpanded] = useState<string | null>(null);
-
-  const toggle = (key: string) => setExpanded((current) => (current === key ? null : key));
-
   return (
     <nav aria-label="Navigation mobile" className="flex-1 overflow-y-auto">
       <ul className="space-y-1">
@@ -104,29 +93,18 @@ export function MobileMainNav({ onNavigate }: { onNavigate: () => void }) {
             );
           }
 
-          const isOpen = expanded === item.href;
           return (
-            <li key={item.href} className="border-b border-paper/10">
-              <div className="flex items-center justify-between gap-3 py-4">
-                <a href={item.href} onClick={onNavigate} className="font-serif text-2xl">
-                  {item.label}
-                </a>
-                <button
-                  type="button"
-                  onClick={() => toggle(item.href)}
-                  aria-expanded={isOpen}
-                  className="grid size-10 place-items-center rounded-full border border-paper/20 text-paper/80"
-                >
-                  <ChevronDown className={`size-4 transition-transform ${isOpen ? "rotate-180" : ""}`} />
-                </button>
-              </div>
-              <ul className={`space-y-1 overflow-hidden pb-3 pl-1 transition-all ${isOpen ? "max-h-96" : "max-h-0"}`}>
+            <li key={item.href} className="border-b border-paper/10 py-4">
+              <a href={item.href} onClick={onNavigate} className="font-serif text-2xl">
+                {item.label}
+              </a>
+              <ul className="mt-3 space-y-1 border-l border-paper/15 pl-4">
                 {item.children.map((child) => (
                   <li key={child.href}>
                     <a
                       href={child.href}
                       onClick={onNavigate}
-                      className="block py-2.5 text-sm leading-snug text-paper/75 hover:text-coral"
+                      className="block py-2 text-sm leading-snug text-paper/80 hover:text-coral"
                     >
                       {child.label}
                     </a>

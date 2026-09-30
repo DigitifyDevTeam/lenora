@@ -14,7 +14,7 @@ export function SiteHeader() {
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 24);
+      setScrolled(window.scrollY > 8);
       setShowMobileCta(window.scrollY > 640);
     };
     onScroll();
@@ -35,9 +35,9 @@ export function SiteHeader() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-soft ${
+        className={`fixed inset-x-0 top-0 z-50 overflow-visible transition-all duration-500 ease-soft ${
           scrolled
-            ? "border-b border-sand/50 bg-paper/85 py-3 shadow-[0_10px_30px_-20px_rgba(58,74,65,0.35)] backdrop-blur-xl"
+            ? "border-b border-sand bg-paper py-3 shadow-[0_10px_28px_-16px_rgba(38,50,43,0.45)]"
             : "bg-transparent py-5"
         }`}
       >
